@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 YouTube Downloader Pro</h1>
+        <p class="subtitle">Descarga videos y playlists completas</p>
+        
+        <div class="input-section">
+            <input type="text" id="urlInput" placeholder="Pega el link de YouTube (video o playlist)...">
+            <button onclick="analizarURL()">🔍 Analizar</button>
+        </div>
+
+        <div id="loader" class="loader" style="display: none;">
+            <div class="spinner"></div>
+            <p>Procesando...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <!-- Información del Video -->
+        <div id="videoInfo" class="info-card" style="display: none;">
+            <h2>📺 Video Individual</h2>
+            <div class="video-preview">
+                <img id="videoThumbnail" src="" alt="Thumbnail">
+                <div class="video-details">
+                    <h3 id="videoTitle"></h3>
+                    <p><strong>Canal:</strong> <span id="videoAuthor"></span></p>
+                    <p><strong>Duración:</strong> <span id="videoDuration"></span></p>
+                </div>
+            </div>
+            <div class="download-options">
+                <select id="videoQuality">
+                    <option value="highest">Máxima Calidad</option>
+                    <option value="1080">1080p</option>
+                    <option value="720">720p</option>
+                    <option value="480">480p</option>
+                    <option value="360">360p</option>
+                </select>
+                <button class="btn-download" onclick="descargarVideo()">📥 Descargar Video</button>
+            </div>
+        </div>
+
+        <!-- Información de Playlist -->
+        <div id="playlistInfo" class="info-card" style="display: none;">
+            <h2>📋 Playlist Completa</h2>
+            <div class="playlist-header">
+                <h3 id="playlistTitle"></h3>
+                <p><strong>Total videos:</strong> <span id="playlistCount"></span></p>
+            </div>
+            
+            <div class="download-options">
+                <select id="playlistQuality">
+                    <option value="highest">Máxima Calidad</option>
+                    <option value="1080">1080p</option>
+                    <option value="720">720p</option>
+                    <option value="480">480p</option>
+                </select>
+                <button class="btn-download btn-large" onclick="descargarPlaylist()">📦 Descargar Playlist Completa (ZIP)</button>
+            </div>
+
+            <div class="videos-list" id="videosList"></div>
+        </div>
+
+        <div class="notice">
+            <strong>⚠️ Aviso Legal:</strong> Solo descarga contenido que tengas permiso de descargar. 
+            Respeta los derechos de autor y los términos de servicio de YouTube.
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
